@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import SavingsProgress from "@/components/SavingsProgress";
 import SavingsCalculator from "@/components/SavingsCalculator";
 
@@ -26,7 +26,7 @@ const Savings = () => {
     toast({
       title: "Plan de ahorro calculado",
       description: `Para alcanzar tu meta necesitas ahorrar $${monthlyAmount.toLocaleString()} mensuales durante ${months} meses.`,
-      variant: "default", // Cambiado de "success" a "default"
+      variant: "default",
     });
   };
 

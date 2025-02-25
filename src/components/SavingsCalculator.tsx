@@ -13,8 +13,11 @@ const SavingsCalculator = ({ onCalculate }: SavingsCalculatorProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (Number(targetAmount) <= 0 || Number(months) <= 0) return;
     onCalculate(Number(targetAmount), Number(months));
   };
+
+  const isFormValid = Number(targetAmount) > 0 && Number(months) > 0;
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow-sm">
@@ -34,6 +37,7 @@ const SavingsCalculator = ({ onCalculate }: SavingsCalculatorProps) => {
             onChange={(e) => setTargetAmount(e.target.value)}
             placeholder="Ej: 10000"
             className="w-full"
+            required
           />
         </div>
         <div>
@@ -49,10 +53,15 @@ const SavingsCalculator = ({ onCalculate }: SavingsCalculatorProps) => {
             onChange={(e) => setMonths(e.target.value)}
             placeholder="Ej: 12"
             className="w-full"
+            required
           />
         </div>
-        <Button type="submit" className="w-full bg-success-default hover:bg-success-dark">
-          Calcular
+        <Button 
+          type="submit" 
+          className="w-full bg-green-600 hover:bg-green-700 text-white"
+          disabled={!isFormValid}
+        >
+          Generar Plan de Ahorro
         </Button>
       </div>
     </form>
