@@ -26,7 +26,7 @@ const Savings = () => {
     toast({
       title: "Plan de ahorro calculado",
       description: `Para alcanzar tu meta necesitas ahorrar $${monthlyAmount.toLocaleString()} mensuales durante ${months} meses.`,
-      variant: "success",
+      variant: "default", // Cambiado de "success" a "default"
     });
   };
 
