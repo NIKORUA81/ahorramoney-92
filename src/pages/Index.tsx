@@ -1,12 +1,59 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { PiggyBank, TrendingUp } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-neutral-100 p-4 pb-20">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="space-y-6"
+      >
+        <div className="text-center pt-8">
+          <h1 className="text-3xl font-poppins font-bold text-neutral-500 mb-2">
+            Financial Saver Genie
+          </h1>
+          <p className="text-neutral-400">
+            Tu asistente inteligente para el ahorro
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 mt-8">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => navigate("/savings")}
+            className="bg-white p-6 rounded-xl shadow-sm flex items-center space-x-4"
+          >
+            <div className="bg-success-light p-3 rounded-lg">
+              <PiggyBank className="text-success-default" size={24} />
+            </div>
+            <div className="text-left">
+              <h3 className="font-semibold text-neutral-500">Plan de Ahorro</h3>
+              <p className="text-sm text-neutral-400">Crea tu plan personalizado</p>
+            </div>
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => navigate("/education")}
+            className="bg-white p-6 rounded-xl shadow-sm flex items-center space-x-4"
+          >
+            <div className="bg-success-light p-3 rounded-lg">
+              <TrendingUp className="text-success-default" size={24} />
+            </div>
+            <div className="text-left">
+              <h3 className="font-semibold text-neutral-500">Educación Financiera</h3>
+              <p className="text-sm text-neutral-400">Aprende sobre finanzas</p>
+            </div>
+          </motion.button>
+        </div>
+      </motion.div>
     </div>
   );
 };
