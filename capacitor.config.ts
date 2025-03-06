@@ -17,6 +17,12 @@ const config: CapacitorConfig = {
       keystoreAliasPassword: undefined,
       signingType: 'apksigner'
     }
+  },
+  ios: {
+    // iOS specific configurations
+    contentInset: 'automatic',
+    preferredContentMode: 'mobile',
+    backgroundColor: '#ffffff'
   }
 };
 
