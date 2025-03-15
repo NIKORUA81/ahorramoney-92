@@ -21,7 +21,8 @@ const SavingsCalendar = ({ targetAmount, dailyAmount, period, onSavingsUpdate }:
   const [savedAmount, setSavedAmount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const daysPerPage = 10;
-
+  
+  // Initialize calendar days when inputs change
   useEffect(() => {
     // Parse the period string to get the total days
     const [value, unit] = period.split(" ");
@@ -44,9 +45,13 @@ const SavingsCalendar = ({ targetAmount, dailyAmount, period, onSavingsUpdate }:
       });
     }
     setDays(calendarDays);
+    
+    // Reset saved amount
     setSavedAmount(0);
-    onSavingsUpdate(0); // Reset parent component's saved amount
-  }, [targetAmount, dailyAmount, period, onSavingsUpdate]);
+    
+    // Notify parent component - but only when the inputs change
+    onSavingsUpdate(0);
+  }, [targetAmount, dailyAmount, period]); // Removed onSavingsUpdate from dependencies
 
   const markDayComplete = (index: number) => {
     const updatedDays = [...days];
@@ -66,7 +71,9 @@ const SavingsCalendar = ({ targetAmount, dailyAmount, period, onSavingsUpdate }:
       0
     );
     setSavedAmount(newSavedAmount);
-    onSavingsUpdate(newSavedAmount); // Update parent component
+    
+    // Notify parent component
+    onSavingsUpdate(newSavedAmount);
   };
 
   const getTotalPages = () => {
