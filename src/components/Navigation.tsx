@@ -1,5 +1,5 @@
 
-import { Home, PiggyBank, BookOpen, User } from "lucide-react";
+import { Home, PiggyBank, BookOpen, User, FileText } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
@@ -8,7 +8,7 @@ const Navigation = () => {
   const navItems = [
     { icon: Home, label: "Inicio", path: "/" },
     { icon: PiggyBank, label: "Ahorros", path: "/savings" },
-    { icon: BookOpen, label: "Educación", path: "/education" },
+    { icon: FileText, label: "Gastos", path: "/daily-money" },
     { icon: User, label: "Perfil", path: "/profile" },
   ];
 

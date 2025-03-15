@@ -1,7 +1,8 @@
 
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { PiggyBank, TrendingUp } from "lucide-react";
+import { PiggyBank, FileText } from "lucide-react";
+import DailyMoneySheet from "@/components/DailyMoneySheet";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -41,16 +42,16 @@ const Index = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => navigate("/education")}
             className="bg-white p-6 rounded-xl shadow-sm flex items-center space-x-4"
           >
             <div className="bg-success-light p-3 rounded-lg">
-              <TrendingUp className="text-success-default" size={24} />
+              <FileText className="text-success-default" size={24} />
             </div>
             <div className="text-left">
-              <h3 className="font-semibold text-neutral-500">Educación Financiera</h3>
-              <p className="text-sm text-neutral-400">Aprende sobre finanzas</p>
+              <h3 className="font-semibold text-neutral-500">Planilla de Gastos</h3>
+              <p className="text-sm text-neutral-400">Manejo diario del dinero</p>
             </div>
+            <DailyMoneySheet />
           </motion.button>
         </div>
       </motion.div>

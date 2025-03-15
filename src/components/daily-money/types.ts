@@ -10,3 +10,9 @@ export interface CategoryItem {
   name: string;
   percentage: number;
 }
+
+export interface CategorySummary {
+  name: string;
+  total: number;
+  percentage: number;
+}
