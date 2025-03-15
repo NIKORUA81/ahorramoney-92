@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Sheet,
   SheetContent,
@@ -77,7 +77,7 @@ const DailyMoneySheet = () => {
   const [newExpenseCategory, setNewExpenseCategory] = useState("Otros");
 
   // Initialize expenses with predefined categories
-  useState(() => {
+  useEffect(() => {
     const initialExpenses: ExpenseItem[] = [];
     
     // Add tithe and savings with percentages
@@ -119,7 +119,7 @@ const DailyMoneySheet = () => {
   }, []);
 
   // Update percentage-based amounts when income changes
-  useState(() => {
+  useEffect(() => {
     if (income > 0) {
       const updatedExpenses = expenses.map(expense => {
         if (expense.percentage) {
@@ -132,7 +132,7 @@ const DailyMoneySheet = () => {
       });
       setExpenses(updatedExpenses);
     }
-  }, [income]);
+  }, [income, expenses]);
 
   const handleAddExpense = () => {
     if (newExpenseName && newExpenseCategory) {
