@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import SavingsProgress from "@/components/SavingsProgress";
 import SavingsCalculator from "@/components/SavingsCalculator";
 import SavingsCalendar from "@/components/SavingsCalendar";
+import DailyMoneySheet from "@/components/DailyMoneySheet";
 
 const Savings = () => {
   const { toast } = useToast();
@@ -73,6 +74,8 @@ const Savings = () => {
             onSavingsUpdate={handleSavingsUpdate}
           />
         )}
+        
+        <DailyMoneySheet />
       </motion.div>
     </div>
   );
