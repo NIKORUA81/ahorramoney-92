@@ -44,6 +44,13 @@ const Savings = () => {
     });
   };
 
+  const handleSavingsUpdate = (savedAmount: number) => {
+    setSavings(prev => ({
+      ...prev,
+      currentAmount: savedAmount
+    }));
+  };
+
   return (
     <div className="pb-20">
       <motion.div
@@ -63,6 +70,7 @@ const Savings = () => {
             targetAmount={savings.targetAmount}
             dailyAmount={savings.dailyAmount}
             period={savings.period}
+            onSavingsUpdate={handleSavingsUpdate}
           />
         )}
       </motion.div>

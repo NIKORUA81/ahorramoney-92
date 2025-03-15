@@ -6,6 +6,7 @@ interface SavingsCalendarProps {
   targetAmount: number;
   dailyAmount: number;
   period: string;
+  onSavingsUpdate: (savedAmount: number) => void;
 }
 
 interface CalendarDay {
@@ -15,7 +16,7 @@ interface CalendarDay {
   amountSaved: number;
 }
 
-const SavingsCalendar = ({ targetAmount, dailyAmount, period }: SavingsCalendarProps) => {
+const SavingsCalendar = ({ targetAmount, dailyAmount, period, onSavingsUpdate }: SavingsCalendarProps) => {
   const [days, setDays] = useState<CalendarDay[]>([]);
   const [savedAmount, setSavedAmount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
@@ -44,7 +45,8 @@ const SavingsCalendar = ({ targetAmount, dailyAmount, period }: SavingsCalendarP
     }
     setDays(calendarDays);
     setSavedAmount(0);
-  }, [targetAmount, dailyAmount, period]);
+    onSavingsUpdate(0); // Reset parent component's saved amount
+  }, [targetAmount, dailyAmount, period, onSavingsUpdate]);
 
   const markDayComplete = (index: number) => {
     const updatedDays = [...days];
@@ -64,6 +66,7 @@ const SavingsCalendar = ({ targetAmount, dailyAmount, period }: SavingsCalendarP
       0
     );
     setSavedAmount(newSavedAmount);
+    onSavingsUpdate(newSavedAmount); // Update parent component
   };
 
   const getTotalPages = () => {
